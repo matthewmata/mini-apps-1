@@ -12,7 +12,7 @@ class App extends React.Component {
   }
 
   handleChange(event) {
-    this.setState({query: event.target.value});
+    this.setState({query: event.target.value}, () => console.log(this.state.query));
   }
 
   handleSubmit(event) {
@@ -40,7 +40,7 @@ class App extends React.Component {
         <form id='form' onSubmit={this.handleSubmit}>
           <label>
             JSON:
-            <input required type="text" onChange={this.handleChange} />
+            <input required type="file" onChange={this.handleChange} />
           </label>
           <input type="submit" value="Submit" />
         </form>
