@@ -83,32 +83,34 @@ class App extends React.Component {
             <Billing handleChange={this.handleChange} handleBillingSubmit={this.handleBillingSubmit} switchPage={this.switchPage}/>
           ) : (
             <div>
-              <h3>Review Your Info</h3>
-              <div>
-                <h5>User Info</h5>
-                <button onClick={() => this.switchPage(0)}>Edit</button>
-                <div>{this.state.name}</div>
-                <div>{this.state.email}</div>
-                <div>{this.state.password}</div>
-              </div>
-              <div>
-                <h5>Shipping Info</h5>
-                <button onClick={() => this.switchPage(1)}>Edit</button>
-                <div>{this.state.addressLine1}</div>
-                <div>{this.state.addressLine2}</div>
-                <div>{this.state.city}</div>
-                <div>{this.state.state}</div>
-                <div>{this.state.zipCode}</div>
-              </div>
-              <div>
-                <h5>Billing Info</h5>
-                <button onClick={() => this.switchPage(2)}>Edit</button>
-                <div>{this.state.creditCardNum}</div>
-                <div>{this.state.expiryDate}</div>
-                <div>{this.state.CVV}</div>
-                <div>{this.state.billingZipCode}</div>
-              </div>
-              <button onClick={() => this.switchPage(0)}>Purchase</button>
+              <form>
+                <h3>Review Your Info</h3>
+                <div>
+                  <h5>User Info</h5>
+                  <button onClick={() => this.switchPage(0)}>Edit</button>
+                  <div>{this.state.name}</div>
+                  <div>{this.state.email}</div>
+                  <div>{this.state.password}</div>
+                </div>
+                <div>
+                  <h5>Shipping Info</h5>
+                  <button onClick={() => this.switchPage(1)}>Edit</button>
+                  <div>{this.state.addressLine1}</div>
+                  <div>{this.state.addressLine2}</div>
+                  <div>{this.state.city}</div>
+                  <div>{this.state.state}</div>
+                  <div>{this.state.zipCode}</div>
+                </div>
+                <div>
+                  <h5>Billing Info</h5>
+                  <button onClick={() => this.switchPage(2)}>Edit</button>
+                  <div>{this.state.creditCardNum}</div>
+                  <div>{this.state.expiryDate}</div>
+                  <div>{this.state.CVV}</div>
+                  <div>{this.state.billingZipCode}</div>
+                </div>
+                <input type="submit" value="Purchase"/>
+              </form>
             </div>
           )}
         </div>
