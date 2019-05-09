@@ -6,6 +6,8 @@
   "scripts": {
     "startMongo": "nodemon serverMongo/index.js",
     "seedMongo": "node databaseMongo/seed.js",
+    "startMySQL": "nodemon serverMySQL/index.js",
+    "seedMySQL": "node databaseMySQL/seed.js",
     "build": "webpack -w -d"
   },
   "keywords": [],

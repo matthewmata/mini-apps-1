@@ -38,12 +38,29 @@ class App extends React.Component {
     this.setState({[event.target.name]: event.target.value});
   }
 
+  // MONGO
+  // handleUserCreationSubmit(event) {
+  //   event.preventDefault();
+  //   const { name, email, password } = this.state 
+  //   axios.get(`/api/checkout/${email}`)
+  //     .then((data) => {
+  //       if (!data.data) {
+  //         axios.post('/api/checkout', { name, email, password })
+  //         .then(() => this.switchPage(1))
+  //         .catch(err => console.log(err));
+  //       } else {
+  //         alert('Email already in use. Try again')
+  //       }
+  //     })
+  //     .catch(err => console.log(err));
+  // }
+
   handleUserCreationSubmit(event) {
     event.preventDefault();
     const { name, email, password } = this.state 
     axios.get(`/api/checkout/${email}`)
       .then((data) => {
-        if (!data.data) {
+        if (!data.data.length) {
           axios.post('/api/checkout', { name, email, password })
           .then(() => this.switchPage(1))
           .catch(err => console.log(err));
@@ -72,47 +89,49 @@ class App extends React.Component {
 
   render() {
     return (
-      <div>
-        <h1>Checkout</h1>
-        <div>
-          {this.state.page === 0 ? (
-            <UserCreation handleChange={this.handleChange} handleUserCreationSubmit={this.handleUserCreationSubmit}/>
-          ) : this.state.page === 1 ? (
-            <Shipping handleChange={this.handleChange} handleShippingSubmit={this.handleShippingSubmit} switchPage={this.switchPage}/>
-          ) : this.state.page === 2 ? (
-            <Billing handleChange={this.handleChange} handleBillingSubmit={this.handleBillingSubmit} switchPage={this.switchPage}/>
-          ) : (
-            <div>
-              <form>
-                <h3>Review Your Info</h3>
-                <div>
-                  <h5>User Info</h5>
-                  <button onClick={() => this.switchPage(0)}>Edit</button>
-                  <div>{this.state.name}</div>
-                  <div>{this.state.email}</div>
-                  <div>{this.state.password}</div>
-                </div>
-                <div>
-                  <h5>Shipping Info</h5>
-                  <button onClick={() => this.switchPage(1)}>Edit</button>
-                  <div>{this.state.addressLine1}</div>
-                  <div>{this.state.addressLine2}</div>
-                  <div>{this.state.city}</div>
-                  <div>{this.state.state}</div>
-                  <div>{this.state.zipCode}</div>
-                </div>
-                <div>
-                  <h5>Billing Info</h5>
-                  <button onClick={() => this.switchPage(2)}>Edit</button>
-                  <div>{this.state.creditCardNum}</div>
-                  <div>{this.state.expiryDate}</div>
-                  <div>{this.state.CVV}</div>
-                  <div>{this.state.billingZipCode}</div>
-                </div>
-                <input type="submit" value="Purchase"/>
-              </form>
-            </div>
-          )}
+      <div id='main'>
+        <div id ='sub'>
+          <h1>Checkout</h1>
+          <div>
+            {this.state.page === 0 ? (
+              <UserCreation handleChange={this.handleChange} handleUserCreationSubmit={this.handleUserCreationSubmit}/>
+            ) : this.state.page === 1 ? (
+              <Shipping handleChange={this.handleChange} handleShippingSubmit={this.handleShippingSubmit} switchPage={this.switchPage}/>
+            ) : this.state.page === 2 ? (
+              <Billing handleChange={this.handleChange} handleBillingSubmit={this.handleBillingSubmit} switchPage={this.switchPage}/>
+            ) : (
+              <div>
+                <form>
+                  <h3>Review Your Info</h3>
+                  <div>
+                    <h5>User Info</h5>
+                    <button onClick={() => this.switchPage(0)}>Edit</button>
+                    <div>{this.state.name}</div>
+                    <div>{this.state.email}</div>
+                    <div>{this.state.password}</div>
+                  </div>
+                  <div>
+                    <h5>Shipping Info</h5>
+                    <button onClick={() => this.switchPage(1)}>Edit</button>
+                    <div>{this.state.addressLine1}</div>
+                    <div>{this.state.addressLine2}</div>
+                    <div>{this.state.city}</div>
+                    <div>{this.state.state}</div>
+                    <div>{this.state.zipCode}</div>
+                  </div>
+                  <div>
+                    <h5>Billing Info</h5>
+                    <button onClick={() => this.switchPage(2)}>Edit</button>
+                    <div>{this.state.creditCardNum}</div>
+                    <div>{this.state.expiryDate}</div>
+                    <div>{this.state.CVV}</div>
+                    <div>{this.state.billingZipCode}</div>
+                  </div>
+                  <input type="submit" value="Purchase"/>
+                </form>
+              </div>
+            )}
+          </div>
         </div>
         
       </div>
